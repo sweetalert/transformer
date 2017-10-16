@@ -1,0 +1,14 @@
+{
+  "name": "@sweetalert/transformer",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/transformer.js",
+  "scripts": {
+    "build": "node_modules/.bin/rollup -c"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "0.50.0"
+  }
+}
