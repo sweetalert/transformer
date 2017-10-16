@@ -10,5 +10,8 @@
   "license": "MIT",
   "devDependencies": {
     "rollup": "0.50.0"
+  },
+  "dependencies": {
+    "sweetalert": "2.0.8"
   }
 }

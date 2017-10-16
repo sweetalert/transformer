@@ -1,4 +1,18 @@
-export default async (params, {
+import swal from 'sweetalert';
+
+export default async (...args) => {
+  const newOptions = await getOptions(...args);
+
+  return swal(newOptions);
+}
+
+export const bindActions = (swalInstance) => {
+  for (const method in swal) {
+    swalInstance[method] = swal[method];
+  }
+}
+
+const getOptions = async (params, {
   identifier,
   transformer,
 }) => {
@@ -8,6 +22,8 @@ export default async (params, {
     identifier, 
     transformer, 
   );
+
+  newOptions = Object.assign({}, parseTextParams(params), newOptions);
 
   const lastParam = params[params.length - 1];
 
@@ -21,6 +37,27 @@ export default async (params, {
 
   return newOptions;
 };
+
+const parseTextParams = params => {
+  const options = {};
+
+  const isString = param => typeof param === "string";
+
+  if (isString(params[0]) && !isString(params[1])) {
+    options.text = params[0];
+  }
+
+  if (isString(params[1])) {
+    options.title = params[0];
+    options.text = params[1];
+  }
+
+  if (isString(params[2])) {
+    options.icon = params[2];
+  }
+
+  return options;
+}
 
 // Return true if param is a SwalOptions object
 const isOptionsParam = (param, isTransformable) => (
