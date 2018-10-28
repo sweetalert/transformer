@@ -7,13 +7,13 @@
     "build": "node_modules/.bin/rollup -c",
     "prepare": "npm run build"
   },
-  "author": "",
+  "author": "Tristan Edwards <tristan.edwards@me.com> (https://tristanedwards.me)",
   "license": "MIT",
   "devDependencies": {
     "rollup": "0.50.0",
-    "sweetalert": "^2.2.x"
+    "sweetalert": "^2.1.x"
   },
   "peerDependencies": {
-    "sweetalert": "^2.2.x"
+    "sweetalert": "^2.1.x"
   }
 }
