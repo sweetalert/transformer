@@ -103,14 +103,21 @@ const transformParams = async (params, isTransformable, transformer) => {
 
     if (!lastParam || !lastParam.content) return;
 
-    const { content } = lastParam;
+    let { content, button } = lastParam;
 
-    if (!isTransformable(content)) return;
+    if (isTransformable(content)) {
+      content = await transformEl(content, transformer, isAsync);
+    }
 
-    const newContent = await transformEl(content, transformer, isAsync);
+    /* TODO?
+    if (isTransformable(button)) {
+      button = await transformEl(button, transformer, isAsync);
+    }
+    */
 
     return {
-      content: newContent,
+      content,
+      //button,
     };
   }
 
